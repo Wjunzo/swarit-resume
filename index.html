@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swarit Kumar Singh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --surface: #161616;
+      --surface2: #1f1f1f;
+      --ink: #e8e6e0;
+      --muted: #5a5a56;
+      --subtle: #2e2e2c;
+      --accent: #c8a96e;
+      --accent-dim: #c8a96e18;
+      --border: #232320;
+      --transition: 0.25s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 28px 100px;
+      animation: enter 0.7s ease both;
+    }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HEADER ── */
+    .header-block {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .header-block img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--subtle);
+      filter: grayscale(30%) brightness(0.9);
+      transition: filter var(--transition), transform var(--transition), border-color var(--transition);
+      flex-shrink: 0;
+    }
+
+    .header-block img:hover {
+      filter: grayscale(0%) brightness(1.05);
+      transform: scale(1.06);
+      border-color: var(--accent);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-top: 7px;
+    }
+
+    .meta a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .meta a:hover { color: var(--accent); }
+
+    /* ── DIVIDER ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    h2 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-top: 22px;
+      margin-bottom: 2px;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── PARAGRAPHS ── */
+    p {
+      color: #8a8880;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    /* ── LISTS ── */
+    ul { list-style: none; padding: 0; }
+
+    ul li {
+      padding: 11px 12px 11px 28px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      font-size: 0.88rem;
+      color: #8a8880;
+      transition: color var(--transition), background var(--transition), padding-left var(--transition);
+      cursor: default;
+      border-radius: 4px;
+    }
+
+    ul li::before {
+      content: '·';
+      position: absolute;
+      left: 10px;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1.55;
+    }
+
+    ul li:hover {
+      color: var(--ink);
+      background: var(--surface);
+      padding-left: 34px;
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    li b {
+      color: #c8c6c0;
+      font-weight: 600;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      display: block;
+      text-decoration: none;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 22px 24px 22px 24px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 0 0 0 #c8a96e00;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, var(--accent-dim), transparent 60%);
+      opacity: 1;
+      transition: opacity var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+      transform: translateY(-3px);
+      box-shadow: 0 0 24px #c8a96e22;
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .click-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 14px;
+      padding: 5px 10px;
+      border: 1px solid #c8a96e40;
+      border-radius: 4px;
+      background: var(--accent-dim);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .project-card:hover .click-hint {
+      background: #c8a96e28;
+      border-color: var(--accent);
+    }
+
+    .click-hint-arrow {
+      font-size: 0.9rem;
+      transition: transform var(--transition);
+      display: inline-block;
+    }
+
+    .project-card:hover .click-hint-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid #c8a96e28;
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .project-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-top: 48px;
+    }
+
+    .disclaimer b { color: #5a5a56; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      h1 { font-size: 1.7rem; }
+      body { padding: 40px 18px 72px; }
+      .header-block { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-block">
+    <img src="myphoto.jpeg" alt="Swarit Kumar Singh">
+    <div>
+      <h1>Swarit Kumar Singh</h1>
+      <p class="meta">
+        19 &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="mailto:swarit.singh25@iimb.ac.in">swarit.singh25@iimb.ac.in</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp; +91-9360904600
+      </p>
+    </div>
+  </div>
+
+  <h2>About</h2>
+  <p>
+    I am a passionate and driven 19-year-old student pursuing a Bachelor of Business Administration at the Indian Institute of Management, Bangalore — one of India's most prestigious management institutions. My primary interest lies in the field of finance, where I aspire to build a career that blends analytical thinking with strategic decision-making.
+  </p>
+  <p>
+    I am deeply fascinated by how financial markets operate, how capital flows shape economies, and how sound financial planning can transform businesses. I am committed to developing a strong foundation in corporate finance, investment analysis, and financial modelling. I actively seek opportunities to apply classroom learning to real-world scenarios, whether through case competitions, internships, or self-driven research. My goal is to contribute meaningfully to the financial sector by combining technical expertise with leadership and communication skills.
+  </p>
+
+  <hr>
+
+  <h2>Education</h2>
+
+  <h3>Indian Institute of Management, Bangalore</h3>
+  <p><b style="color:#c8c6c0">Bachelor of Business Administration</b> &mdash; Currently Pursuing</p>
+  <p>One of India's premier management institutions, known for academic excellence and industry exposure.</p>
+
+  <h3>Maharishi Vidya Mandir School</h3>
+  <p><b style="color:#c8c6c0">Class XII</b> &mdash; Completed &nbsp;·&nbsp; CBSE</p>
+  <p><b style="color:#c8c6c0">Class X</b> &mdash; Completed &nbsp;·&nbsp; CBSE</p>
+
+  <hr>
+
+  <h2>Skills</h2>
+
+  <h3>Technical</h3>
+  <ul>
+    <li><b>Website Development</b> &mdash; Proficient in building and maintaining websites; capable of designing functional and user-friendly web interfaces.</li>
+    <li><b>Financial Analysis</b> &mdash; Skilled in interpreting financial statements, evaluating business performance, and applying analytical frameworks.</li>
+    <li><b>Microsoft Excel</b> &mdash; Advanced proficiency including pivot tables, financial modelling, and formula-driven analysis.</li>
+  </ul>
+
+  <h3>Soft Skills</h3>
+  <ul>
+    <li><b>Public Speaking</b> &mdash; Confident and articulate communicator with experience presenting to diverse audiences in academic and professional settings.</li>
+    <li><b>Team Management</b> &mdash; Proven ability to collaborate, delegate responsibilities, and drive group objectives to successful outcomes.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Areas of Interest</h2>
+  <ul>
+    <li>Corporate Finance &amp; Investment Banking</li>
+    <li>Equity Research &amp; Portfolio Management</li>
+    <li>Financial Modelling &amp; Valuation</li>
+    <li>Macroeconomics &amp; Capital Markets</li>
+    <li>FinTech and Digital Finance</li>
+  </ul>
+
+  <hr>
+
+  <h2>Projects</h2>
+
+  <a class="project-card" href="https://wjunzo.github.io/proket-1/" target="_blank">
+    <span class="project-tag">Web Dev &nbsp;·&nbsp; IIM Bangalore &nbsp;·&nbsp; Term II</span>
+    <h3>Advanced Statistics — Module Summaries</h3>
+    <p>A self-built website hosting module-wise summaries of Advanced Statistics from the BBA Term II curriculum at IIM Bangalore. Covers 4 modules including Distributions &amp; Combinations. Built and deployed independently.</p>
+    <span class="click-hint">Visit project website <span class="click-hint-arrow">↗</span></span>
+  </a>
+
+  <hr>
+
+  <h2>Extracurricular</h2>
+  <ul>
+    <li>Participated in business case competitions at the college level.</li>
+    <li>Engaged in finance and investment clubs within IIM Bangalore.</li>
+    <li>Demonstrated leadership in group projects and academic presentations.</li>
+    <li>Consistently shown initiative in self-learning financial concepts beyond the curriculum.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Languages</h2>
+  <ul>
+    <li>Hindi &mdash; Native</li>
+    <li>English &mdash; Proficient</li>
+  </ul>
+
+  <p class="disclaimer">
+    <b>⚠ DISCLAIMER —</b> This resume has been created for academic and informational purposes only. Some details such as contact information, specific grades, and extracurricular achievements are placeholder or generalised entries and may not reflect exact real-world data at the time of viewing. The information provided herein is accurate to the best of the individual's knowledge at the time of preparation. This document does not constitute any form of official certification or verified professional claim. Readers are advised to independently verify any details before making decisions based on the content of this resume.
+  </p>
+
+</body>
+</html>
